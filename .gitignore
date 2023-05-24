@@ -1,0 +1,10 @@
+# .gitignore
+
+# Python
+backend/venv/
+*.pyc
+
+# Node.js
+frontend/node_modules/
+frontend/.next/
+frontend/.env
