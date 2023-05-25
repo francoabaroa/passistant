@@ -1,6 +1,7 @@
 # .gitignore
 .env
 TODO.md
+PM.md
 
 # Python
 backend/venv/
