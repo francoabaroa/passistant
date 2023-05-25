@@ -1,0 +1,1 @@
+# Connects to various data sources (sms, email, PDFs, voice notes, messaging apps, calendars) to ingest data into the central system

@@ -1,0 +1,1 @@
+# Responsible for knowing when to send out a notification or push

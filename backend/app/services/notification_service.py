@@ -1,0 +1,1 @@
+# Responsible for sending notifications to parents via SMS, email, messaging apps, create calendar events, or calls

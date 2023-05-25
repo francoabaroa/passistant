@@ -1,0 +1,1 @@
+# Uses OpenAI's and other external/internal tools to parse and process the ingested data, extracting relevant information, saving it and creating relevant events (calendar, sms, etc)
