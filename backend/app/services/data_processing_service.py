@@ -1,10 +1,17 @@
 import openai
 import os
+from os.path import basename
+from pydub import AudioSegment
+import requests
+from requests.auth import HTTPBasicAuth
+from urllib.parse import urlparse
 
 from dotenv import load_dotenv
 
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY", "")
+account_sid = os.getenv("TWILIO_ACCOUNT_SID", "")
+auth_token = os.getenv("TWILIO_AUTH_TOKEN", "")
 
 class DataProcessingService:
     def __init__(self):
@@ -59,7 +66,37 @@ class DataProcessingService:
             return None
 
     def process_audio(self, media_url):
-        # Your audio processing code goes here
+        parsed = urlparse(media_url)
+        filename = basename(parsed.path)
+
+        # Retrieve the file from the url
+        response = requests.get(media_url, stream=True, auth=HTTPBasicAuth(account_sid, auth_token))
+        if response.status_code == 200:
+            with open(filename, 'wb') as audio_file:
+                for chunk in response.iter_content(chunk_size=1024):
+                    if chunk:
+                        audio_file.write(chunk)
+
+            # Convert the audio file to a supported format for OpenAI Whisper
+            filename_without_ext = os.path.splitext(filename)[0]
+            converted_filename = filename_without_ext + ".wav"
+
+            audio = AudioSegment.from_file(filename)
+            audio.export(converted_filename, format="wav")
+
+            with open(converted_filename, "rb") as audio_file:
+                transcript = openai.Audio.transcribe("whisper-1", audio_file)
+
+            print("\033[96m\033[1m"+"\n*****transcript*****\n"+"\033[0m\033[0m")
+            print(transcript.text)
+
+            # Process transcript
+            self.process_text(transcript.text)
+
+            # Remove the original and converted audio files
+            os.remove(filename)
+            os.remove(converted_filename)
+
         print("Processing audio from: {}".format(media_url))
 
     def process_image(self, media_url):
