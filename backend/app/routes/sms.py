@@ -1,16 +1,9 @@
-from flask import Blueprint, request
-from twilio.twiml.messaging_response import MessagingResponse
+from flask import Blueprint
+from app.services import DataIngestionService
 
-# app = Flask(__name__)
 sms_blueprint = Blueprint('sms_blueprint', __name__)
+data_ingestion_service = DataIngestionService()
 
-@sms_blueprint.route("/sms", methods=['POST'])
-def sms_reply():
-    """Respond to incoming calls with a simple text message."""
-    resp = MessagingResponse()
-
-    msg = request.form.get('Body')  # Extract the message body from the incoming request.
-    resp.message("You said: {}".format(msg))
-    print(msg)
-    return str(resp)
-
+@sms_blueprint.route('/sms', methods=['POST'])
+def handle_sms():
+    return data_ingestion_service.ingest_sms()
