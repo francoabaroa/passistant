@@ -1,8 +1,12 @@
 # .gitignore
+.env
+TODO.md
 
 # Python
 backend/venv/
 *.pyc
+backend/.env
+
 
 # Node.js
 frontend/node_modules/
