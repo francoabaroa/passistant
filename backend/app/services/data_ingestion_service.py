@@ -27,7 +27,8 @@ class DataIngestionService:
             self.send_response_sms(dict)
         elif 'audio' in media_type:
             response_text = "You sent a voice note: {}".format(media_url)
-            self.data_processor.process_audio(media_url)
+            dict = self.data_processor.process_audio(media_url)
+            self.send_response_sms(dict)
         elif 'image' in media_type:
             response_text = "You sent an image: {}".format(media_url)
             self.data_processor.process_image(media_url)
