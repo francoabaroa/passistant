@@ -197,11 +197,13 @@ class DataProcessingService:
             print("\033[96m\033[1m"+"\n*****transcript_end*****\n"+"\033[0m\033[0m")
 
             # Process transcript
-            self.process_text(transcript.text)
+            processed_text = self.process_text(transcript.text)
 
             # Remove the original and converted audio files
             os.remove(filename)
             os.remove(converted_filename)
+
+            return processed_text
 
         print("Processing audio from: {}".format(media_url))
 
