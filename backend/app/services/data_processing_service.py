@@ -159,18 +159,6 @@ class DataProcessingService:
             return None
 
     def process_audio(self, media_url):
-        # Your audio processing code goes here
-        # examples: save grocery list
-        # examples: remind me to call doctor tomorrow
-        # examples: pink shirt day Wed
-        # examples: remind me to pay nanny friday 5pm
-        # examples: buy school uniform this week
-        # examples: congratulate grandma for birthday next thurs
-        # Steps
-        # Use Whisper to parse voice to text
-        # Use GPT 3.5 to parse text request and determine action
-        # Use gpt3.5 to store safely in database
-
         parsed = urlparse(media_url)
         filename = basename(parsed.path)
 
