@@ -180,10 +180,6 @@ class DataProcessingService:
             with open(converted_filename, "rb") as audio_file:
                 transcript = openai.Audio.transcribe("whisper-1", audio_file)
 
-            print("\033[96m\033[1m"+"\n*****transcript*****\n"+"\033[0m\033[0m")
-            print(transcript.text)
-            print("\033[96m\033[1m"+"\n*****transcript_end*****\n"+"\033[0m\033[0m")
-
             # Process transcript
             processed_text = self.process_text(transcript.text)
 
