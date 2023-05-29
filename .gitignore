@@ -1,13 +1,14 @@
 # .gitignore
 .env
-TODO.md
+NITS.md
 PM.md
+PROMPT.md
 
 # Python
 backend/venv/
 *.pyc
 backend/.env
-
+backend/app/prompts/
 
 # Node.js
 frontend/node_modules/
