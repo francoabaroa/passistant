@@ -1,5 +1,6 @@
 # Handle and store data
 # Save data to calendar/todo
+# make sure to validate phone and email
 
 class DataStorageService:
     def __init__(self):
