@@ -31,13 +31,13 @@ class DataIngestionService:
             response = self.data_processor.process_image(media_url)
             self.send_response_sms(response)
         elif 'application/pdf' in media_type:
-            response_text = "You sent a PDF: {}".format(media_url)
+            response = "You sent a PDF: {}".format(media_url)
             self.data_processor.process_document(media_url)
         else:
-            response_text = "You sent an unsupported file type: {}".format(media_url)
+            response = "You sent an unsupported file type: {}".format(media_url)
             self.data_processor.process_unsupported(media_url)
 
-        resp.message(response_text)
+        resp.message(response)
         return str(resp)
 
     def send_response_sms(self, body):
