@@ -3,11 +3,13 @@ from app.routes import register_blueprints
 from app import db
 from config import Config
 from flask_migrate import Migrate
+from flask_cors import CORS
 
 migrate = Migrate()
 
 def create_app():
     app = Flask(__name__)
+    CORS(app, origins=["http://localhost:3000"])
     app.config.from_object(Config)
 
     db.init_app(app)
