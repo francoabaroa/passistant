@@ -60,29 +60,29 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center justify-between p-24 min-h-screen">
       <div className="z-10 max-w-5xl w-full items-start justify-between font-mono text-sm flex">
-        <div className="mt-10">
-          <h2 className="mb-3 text-2xl font-semibold">Reminders</h2>
+        <div className="mt-10 mr-8">
+          <h1 className="mb-3 text-2xl font-semibold">Reminders</h1>
           {reminders.map(reminder => (
             <div key={reminder.id} className="border p-2 rounded my-2">
-              <h3 className="font-bold">{reminder.name}</h3>
-              <p>Details: {reminder.details}</p>
-              <p>Due Date: {reminder.due_date}</p>
-              <p>Due Time: {reminder.due_time}</p>
-              <p>Original Text: {reminder.original_text}</p>
-              <p>Source: {reminder.source}</p>
-              <p>Priority: {reminder.priority}</p>
-              <p>Type: {reminder.type}</p>
+              <h2 className="font-bold" style={{ fontSize: '1.5em', paddingBottom: '10px' }}>{reminder.name}</h2>
+              <p className='pb-2'><b>Details:</b> {reminder.details}</p>
+              <p className='pb-2'><b>Due Date:</b> {reminder.due_date}</p>
+              <p className='pb-2'><b>Due Time:</b> {reminder.due_time}</p>
+              <p className='pb-2'><b>Original Text:</b> {reminder.original_text}</p>
+              <p className='pb-2'><b>Source:</b> {reminder.source}</p>
+              <p className='pb-2'><b>Priority:</b> {reminder.priority}</p>
+              <p className='pb-2'><b>Type:</b> {reminder.type}</p>
             </div>
           ))}
         </div>
         <div className="mt-10">
-          <h2 className="mb-3 text-2xl font-semibold">Lists</h2>
+          <h1 className="mb-3 text-2xl font-semibold">Lists</h1>
           {lists.map(list => (
             <div key={list.id} className="border p-2 rounded my-2">
-              <h3 className="font-bold">{list.name}</h3>
-              <p>Type: {list.type}</p>
-              <p>Original Text: {list.original_text}</p>
-              <p>Due Date: {list.due_date}</p>
+              <h2 className="font-bold" style={{ fontSize: '1.5em', paddingBottom: '10px' }}>{list.name}</h2>
+              <p className='pb-2'><b>Type:</b> {list.type}</p>
+              <p className='pb-2'><b>Original Text:</b> {list.original_text}</p>
+              <p className='pb-2'><b>Due Date:</b> {list.due_date}</p>
               <h4 className="cursor-pointer flex items-center" onClick={() => toggleListItems(list.id)}>
                 List Items:
                 {expandedListId === list.id ?
@@ -91,9 +91,9 @@ export default function Home() {
                 }
               </h4>
               {expandedListId === list.id && list.list_items.map(item => (
-                <div key={item.id} className="border p-2 rounded my-2">
-                  <p>Name: {item.name}</p>
-                  <p>Quantity: {item.quantity}</p>
+                <div key={item.id} className="border p-3 rounded my-2">
+                  <p><b>Name:</b> {item.name}</p>
+                  <p><b>Quantity:</b> {item.quantity}</p>
                 </div>
               ))}
             </div>
