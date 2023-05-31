@@ -53,7 +53,6 @@ class DataProcessingService:
             json_assistant_reply = json.loads(assistant_reply)
             message_type = json_assistant_reply.get('messageType', {})
 
-            # TODO: make sure you save the original message in the database
             if message_type == 'reminder':
                 self.data_storage.store_reminder(json_assistant_reply, original_text, source)
             elif message_type == 'list':
