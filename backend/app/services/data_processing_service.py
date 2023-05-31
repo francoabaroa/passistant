@@ -57,7 +57,7 @@ class DataProcessingService:
             if message_type == 'reminder':
                 self.data_storage.store_reminder(json_assistant_reply, original_text, source)
             elif message_type == 'list':
-                print('List')
+                self.data_storage.store_list(json_assistant_reply, original_text)
 
             return str(assistant_reply)
         except Exception as e:

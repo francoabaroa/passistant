@@ -1,8 +1,9 @@
 # Handle and store data
 # Save data to calendar/todo
 # make sure to validate phone and email
-from app.models import Member, Family, Reminder
+from app.models import List, ListItem, Member, Family, Reminder
 from app.models.reminder import Priority, Source, Type
+from app.models.list import ListType
 from app import db
 from datetime import datetime
 
@@ -13,13 +14,26 @@ class DataStorageService:
     def __init__(self):
         pass
 
-    def store_data(self, data):
-        # Stub function to simulate data storing
-        print("Storing data: ", data)
-        return data
+    def store_list(self, data, original_text):
+        list_content = data.get('listContent', {})
+        list_items = list_content.get('listItems')
 
-    def store_list(self, data):
-        print('')
+        new_list = List(
+            name          = list_content.get('listName'),
+            due_date      = list_content.get('formattedDueDate'),
+            type          = ListType(list_content.get('listType').upper()),
+            original_text = original_text,
+            member_id     = TEMP_HARDCODED_ID
+        )
+
+        db.session.add(new_list)
+        db.session.commit()
+
+        items = [ListItem(name=name, quantity=str(quantity), completed=False, favorited=False, list_id=new_list.id) for name, quantity in list_items.items()]
+
+        db.session.add_all(items)
+        db.session.commit()
+        print('Saved List')
 
     def store_reminder(self, data, original_text, source):
         reminder_content = data.get('reminderContent', {})
