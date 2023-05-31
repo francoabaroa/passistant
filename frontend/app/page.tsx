@@ -65,13 +65,13 @@ export default function Home() {
           {reminders.map(reminder => (
             <div key={reminder.id} className="border p-2 rounded my-2">
               <h2 className="font-bold" style={{ fontSize: '1.5em', paddingBottom: '10px' }}>{reminder.name}</h2>
-              <p className='pb-2'><b>Details:</b> {reminder.details}</p>
-              <p className='pb-2'><b>Due Date:</b> {reminder.due_date}</p>
-              <p className='pb-2'><b>Due Time:</b> {reminder.due_time}</p>
-              <p className='pb-2'><b>Original Text:</b> {reminder.original_text}</p>
-              <p className='pb-2'><b>Source:</b> {reminder.source}</p>
-              <p className='pb-2'><b>Priority:</b> {reminder.priority}</p>
-              <p className='pb-2'><b>Type:</b> {reminder.type}</p>
+              <p className="pb-2"><b>Details:</b> {reminder.details}</p>
+              <p className="pb-2"><b>Due Date:</b> {reminder.due_date}</p>
+              <p className="pb-2"><b>Due Time:</b> {reminder.due_time}</p>
+              <p className="pb-2"><b>Original Text:</b> {reminder.original_text}</p>
+              <p className="pb-2"><b>Source:</b> {reminder.source}</p>
+              <p className="pb-2"><b>Priority:</b> {reminder.priority}</p>
+              <p className="pb-2"><b>Type:</b> {reminder.type}</p>
             </div>
           ))}
         </div>
@@ -80,9 +80,9 @@ export default function Home() {
           {lists.map(list => (
             <div key={list.id} className="border p-2 rounded my-2">
               <h2 className="font-bold" style={{ fontSize: '1.5em', paddingBottom: '10px' }}>{list.name}</h2>
-              <p className='pb-2'><b>Type:</b> {list.type}</p>
-              <p className='pb-2'><b>Original Text:</b> {list.original_text}</p>
-              <p className='pb-2'><b>Due Date:</b> {list.due_date}</p>
+              <p className="pb-2"><b>Type:</b> {list.type}</p>
+              <p className="pb-2"><b>Original Text:</b> {list.original_text}</p>
+              <p className="pb-2"><b>Due Date:</b> {list.due_date}</p>
               <h4 className="cursor-pointer flex items-center" onClick={() => toggleListItems(list.id)}>
                 List Items:
                 {expandedListId === list.id ?
