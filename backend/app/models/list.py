@@ -25,6 +25,6 @@ class List(db.Model):
     due_date = db.Column(db.DateTime)
     type = db.Column(SQLAEnum(Type), nullable=True)
     archived = db.Column(db.Boolean)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    member_id = db.Column(db.Integer, db.ForeignKey('member.id'))
 
-    user = db.relationship('User', backref=db.backref('lists', lazy=True))
+    member = db.relationship('Member', backref=db.backref('lists', lazy=True))

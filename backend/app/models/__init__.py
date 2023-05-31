@@ -1,5 +1,5 @@
 from .family import Family
-from .user import User
+from .member import Member
 from .reminder import Reminder
 from .list import List
 from .list_item import ListItem

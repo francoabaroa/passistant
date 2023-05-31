@@ -13,7 +13,7 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
 
-    from app.models import User, Family, Reminder, List, ListItem
+    from app.models import Member, Family, Reminder, List, ListItem
 
     with app.app_context():
         db.create_all()

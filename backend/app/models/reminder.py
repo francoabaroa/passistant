@@ -41,6 +41,6 @@ class Reminder(db.Model):
     priority = db.Column(SQLAEnum(Priority), nullable=True)
     type = db.Column(SQLAEnum(Type), nullable=True)
     archived = db.Column(db.Boolean)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    member_id = db.Column(db.Integer, db.ForeignKey('member.id'))
 
-    user = db.relationship('User', backref=db.backref('reminders', lazy=True))
+    member = db.relationship('Member', backref=db.backref('reminders', lazy=True))
