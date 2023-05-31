@@ -3,14 +3,14 @@ from sqlalchemy import Enum as SQLAEnum
 from enum import Enum
 
 class Role(Enum):
-    PARENT = 'parent'
-    FAMILY = 'family'
-    CAREGIVER = 'caregiver'
+    PARENT = 'PARENT'
+    FAMILY = 'FAMILY'
+    CAREGIVER = 'CAREGIVER'
 
 class Status(Enum):
-    ACTIVE = 'active'
-    INACTIVE = 'inactive'
-    DELETED = 'deleted'
+    ACTIVE = 'ACTIVE'
+    INACTIVE = 'INACTIVE'
+    DELETED = 'DELETED'
 
 class Member(db.Model):
     __tablename__ = 'member'

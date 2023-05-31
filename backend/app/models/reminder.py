@@ -3,28 +3,28 @@ from sqlalchemy import Enum as SQLAEnum
 from enum import Enum
 
 class Source(Enum):
-    SMS = 'sms'
-    EMAIL = 'email'
-    CALENDAR = 'calendar'
-    VOICE_NOTE = 'voice note'
-    IMAGE = 'image'
+    SMS = 'SMS'
+    EMAIL = 'EMAIL'
+    CALENDAR = 'CALENDAR'
+    VOICE_NOTE = 'VOICE NOTE'
+    IMAGE = 'IMAGE'
 
 class Priority(Enum):
-    NONE = 'none'
-    HIGH = 'high'
+    NONE = 'NONE'
+    HIGH = 'HIGH'
 
 class Type(Enum):
-    TASK = 'task'
-    EVENT = 'event'
-    APPOINTMENT = 'appointment'
-    ANNIVERSARY = 'anniversary'
-    BILL = 'bill'
-    CHORE = 'chore'
-    MEDICATION = 'medication'
-    EXERCISE = 'exercise'
-    HOMEWORK = 'homework'
-    MEETING = 'meeting'
-    GENERIC = 'generic'
+    TASK = 'TASK'
+    EVENT = 'EVENT'
+    APPOINTMENT = 'APPOINTMENT'
+    ANNIVERSARY = 'ANNIVERSARY'
+    BILL = 'BILL'
+    CHORE = 'CHORE'
+    MEDICATION = 'MEDICATION'
+    EXERCISE = 'EXERCISE'
+    HOMEWORK = 'HOMEWORK'
+    MEETING = 'MEETING'
+    GENERIC = 'GENERIC'
 
 class Reminder(db.Model):
     __tablename__ = 'reminder'

@@ -3,18 +3,18 @@ from sqlalchemy import Enum as SQLAEnum
 from enum import Enum
 
 class Type(Enum):
-    GROCERY = 'grocery'
-    SHOPPING = 'shopping'
-    PACKING = 'packing'
-    MEAL_PLANNING = 'meal planning'
-    RECIPE = 'recipe'
-    CHORE = 'chore'
-    HOMEWORK = 'homework'
-    PROJECT = 'project'
-    EVENT_PLANNING = 'event planning'
-    EXTRACURRICULAR = 'extracurricular'
-    GOAL = 'goal'
-    GENERIC = 'generic'
+    GROCERY = 'GROCERY'
+    SHOPPING = 'SHOPPING'
+    PACKING = 'PACKING'
+    MEAL_PLANNING = 'MEAL PLANNING'
+    RECIPE = 'RECIPE'
+    CHORE = 'CHORE'
+    HOMEWORK = 'HOMEWORK'
+    PROJECT = 'PROJECT'
+    EVENT_PLANNING = 'EVENT PLANNING'
+    EXTRACURRICULAR = 'EXTRACURRICULAR'
+    GOAL = 'GOAL'
+    GENERIC = 'GENERIC'
 
 class List(db.Model):
     __tablename__ = 'list'
