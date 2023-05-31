@@ -1,5 +1,7 @@
+from .data_storage_service import DataStorageService
 import boto3
 from io import BytesIO
+import json
 import openai
 import os
 from os.path import basename
@@ -25,11 +27,10 @@ auth_token = os.getenv("TWILIO_AUTH_TOKEN", "")
 
 class DataProcessingService:
     def __init__(self):
-        pass
+        self.data_storage = DataStorageService()
 
-    def process_text(self, msg):
+    def process_text(self, original_text, source = 'SMS'):
         try:
-
             conversation = [
                 {
                     "role": "system",
@@ -37,7 +38,7 @@ class DataProcessingService:
                 },
                 {
                     "role": "user",
-                    "content": msg
+                    "content": original_text
                 }
             ]
 
@@ -49,8 +50,15 @@ class DataProcessingService:
 
             # Extract the assistant's reply
             assistant_reply = response['choices'][0]['message']['content']
+            json_assistant_reply = json.loads(assistant_reply)
+            message_type = json_assistant_reply.get('messageType', {})
 
             # TODO: make sure you save the original message in the database
+            if message_type == 'reminder':
+                self.data_storage.store_reminder(json_assistant_reply, original_text, source)
+            elif message_type == 'list':
+                print('List')
+
             return str(assistant_reply)
         except Exception as e:
             print(f"Error in process_text: {str(e)}")
@@ -79,7 +87,8 @@ class DataProcessingService:
                 transcript = openai.Audio.transcribe("whisper-1", audio_file)
 
             # Process transcript
-            processed_text = self.process_text(transcript.text)
+            source = 'VOICE NOTE'
+            processed_text = self.process_text(transcript.text, source)
 
             # Remove the original and converted audio files
             os.remove(filename)
@@ -102,7 +111,7 @@ class DataProcessingService:
         response = textract.detect_document_text(Document={'Bytes': img})
         extracted_text = ""
 
-        # Print detected text
+        # Extract detected text
         for item in response["Blocks"]:
             if item["BlockType"] == "LINE":
                 extracted_text += item["Text"] + "\n"
@@ -110,7 +119,8 @@ class DataProcessingService:
         extracted_text = extracted_text.strip()
 
         # Process extracted text
-        processed_text = self.process_text(extracted_text)
+        source = 'IMAGE'
+        processed_text = self.process_text(extracted_text, source)
         return processed_text
 
     def process_document(self, media_url):
