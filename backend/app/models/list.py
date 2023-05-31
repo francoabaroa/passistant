@@ -2,7 +2,7 @@ from app import db
 from sqlalchemy import Enum as SQLAEnum
 from enum import Enum
 
-class Type(Enum):
+class ListType(Enum):
     GROCERY = 'GROCERY'
     SHOPPING = 'SHOPPING'
     PACKING = 'PACKING'
@@ -23,7 +23,7 @@ class List(db.Model):
     name = db.Column(db.String)
     original_text = db.Column(db.Text)
     due_date = db.Column(db.DateTime)
-    type = db.Column(SQLAEnum(Type), nullable=True)
+    type = db.Column(SQLAEnum(ListType), nullable=True)
     archived = db.Column(db.Boolean)
     member_id = db.Column(db.Integer, db.ForeignKey('member.id'))
 
