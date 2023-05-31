@@ -6,6 +6,7 @@ from app.models.reminder import Priority, Source, Type
 from app import db
 from datetime import datetime
 
+# TODO: use phone number to look up member.id
 TEMP_HARDCODED_ID = 1
 
 class DataStorageService:
