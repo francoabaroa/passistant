@@ -1,16 +1,12 @@
 from .data_storage_service import DataStorageService
 import boto3
-from io import BytesIO
 import json
 import openai
 import os
 from os.path import basename
-from PIL import Image
 from ..prompts.assistant import assistant_prompt
 from pydub import AudioSegment
-import pytesseract
 import requests
-import re
 from requests.auth import HTTPBasicAuth
 from urllib.parse import urlparse
 
