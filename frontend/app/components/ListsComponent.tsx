@@ -22,7 +22,7 @@ type List = {
   list_items: ListItem[];
 };
 
-export default function Lists() {
+export default function ListsComponent() {
   const [lists, setLists] = useState<List[]>([]);
   const [expandedListId, setExpandedListId] = useState<number | null>(null);
 

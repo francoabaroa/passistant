@@ -19,7 +19,7 @@ type Reminder = {
   member_id: number;
 };
 
-export default function Reminders() {
+export default function RemindersComponent() {
   const [reminders, setReminders] = useState<Reminder[]>([]);
 
   useEffect(() => {
