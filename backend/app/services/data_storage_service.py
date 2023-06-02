@@ -1,8 +1,8 @@
-# Handle and store data
 # Save data to calendar/todo
 # make sure to validate phone and email
-from app.models import List, ListItem, Member, Family, Reminder
-from app.models.reminder import Priority, Source, Type
+from app.models import List, ListItem, Reminder
+from app.models.reminder import Priority, Type
+from app.enums.source import Source
 from app.models.list import ListType
 from app import db
 from datetime import datetime
@@ -14,7 +14,7 @@ class DataStorageService:
     def __init__(self):
         pass
 
-    def store_list(self, data, original_text):
+    def store_list(self, data, original_text, source):
         list_content = data.get('listContent', {})
         list_items = list_content.get('listItems')
 
@@ -22,6 +22,7 @@ class DataStorageService:
             name          = list_content.get('listName'),
             due_date      = list_content.get('formattedDueDate'),
             type          = ListType(list_content.get('listType').upper()),
+            source        = Source(source.upper()),
             original_text = original_text,
             member_id     = TEMP_HARDCODED_ID
         )
