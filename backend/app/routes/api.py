@@ -2,14 +2,14 @@ from flask import Blueprint, jsonify
 from twilio.rest import Client
 from dotenv import load_dotenv
 import os
+from app import db
 
-from app.models import Reminder, List   # Add this line, replace 'your_app_package' with the name of your package
+from app.models import Reminder, List, Member
 
 load_dotenv()
-TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID", "")
-TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN", "")
+
+# TODO: Temporary,
 TWILIO_TO_NUMBER = os.getenv("TWILIO_TO_NUMBER", "")
-TWILIO_FROM_NUMBER = os.getenv("TWILIO_FROM_NUMBER", "")
 
 api = Blueprint('api', __name__)
 
@@ -20,7 +20,7 @@ def hello_world():
 # TODO: get_all_reminders and get_all_lists should be in a separate data_query_service
 @api.route('/api/reminders', methods=['GET'])
 def get_all_reminders():
-    reminders = Reminder.query.all()
+    reminders = db.session.query(Reminder).join(Member).filter(Member.phone == TWILIO_TO_NUMBER).all()
     all_reminders = [
         {
             'id': reminder.id,
@@ -44,7 +44,7 @@ def get_all_reminders():
 
 @api.route('/api/lists', methods=['GET'])
 def get_all_lists():
-    lists = List.query.all()
+    lists = db.session.query(List).join(Member).filter(Member.phone == TWILIO_TO_NUMBER).all()
     all_lists = [
         {
             'id': list.id,

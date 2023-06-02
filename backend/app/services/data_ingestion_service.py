@@ -21,18 +21,20 @@ class DataIngestionService:
         msg = request.form.get('Body')  # Extract the message body from the incoming request.
         media_type = request.form.get('MediaContentType0')  # Extract the media type from the incoming request.
         media_url = request.form.get('MediaUrl0')  # Extract the media URL from the incoming request.
+        from_number = request.form.get('From')  # Extract the sender's phone number from the incoming request.
         response = ""
 
         if media_type is None:
-            response = self.data_processor.process_text(msg)
+            source = 'SMS'
+            response = self.data_processor.process_text(msg, source, from_number)
             reply_message = self.get_reply_message(response)
             self.send_response_sms(reply_message)
         elif 'audio' in media_type:
-            response = self.data_processor.process_audio(media_url)
+            response = self.data_processor.process_audio(media_url, from_number)
             reply_message = self.get_reply_message(response)
             self.send_response_sms(reply_message)
         elif 'image' in media_type:
-            response = self.data_processor.process_image(media_url)
+            response = self.data_processor.process_image(media_url, from_number)
             reply_message = self.get_reply_message(response)
             self.send_response_sms(reply_message)
         elif 'application/pdf' in media_type:
