@@ -33,6 +33,7 @@ type List = {
   name: string;
   original_text: string;
   due_date: string | null;
+  source: string | null;
   type: string | null;
   archived: boolean;
   member_id: number;
@@ -86,6 +87,7 @@ export default function Home() {
                 <p className="pb-2"><b>Type:</b> {list.type}</p>
                 <p className="pb-2"><b>Original Text:</b> {list.original_text}</p>
                 <p className="pb-2"><b>Due Date:</b> {list.due_date}</p>
+                <p className="pb-2"><b>Source:</b> {list.source}</p>
                 <h4 className="cursor-pointer flex items-center" onClick={() => toggleListItems(list.id)}>
                   List Items:
                   {expandedListId === list.id ?

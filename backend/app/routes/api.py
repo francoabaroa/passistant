@@ -52,6 +52,7 @@ def get_all_lists():
             'original_text': list.original_text,
             'due_date': list.due_date.isoformat() if list.due_date else None,
             'type': list.type.name if list.type else None,
+            'source': list.source.name if list.source else None,
             'archived': list.archived,
             'member_id': list.member_id,
             'list_items': [
