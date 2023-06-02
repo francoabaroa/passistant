@@ -1,6 +1,7 @@
 'use client';
 
 export default function AppBar() {
+
   return (
     <div className="p-4 bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -16,16 +17,16 @@ export default function AppBar() {
               </button>
             </div>
             <div className="hidden lg:block lg:ml-10">
-              <a href="#" className="text-2xl font-bold text-gray-700">smilo</a> {/* replace "AppName" with your app name */}
+              <a href="/" className="text-2xl font-bold text-gray-700">smilo</a>
             </div>
           </div>
           <div className="hidden lg:block lg:w-3/4">
             <div className="flex justify-end">
-              <a href="#" className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700">Home</a>
-              <a href="#" className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700">Reminders</a>
-              <a href="#" className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700">Lists</a>
-              <a href="#" className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700">Calendar</a>
-              <a href="#" className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700">Settings</a>
+              <a href="/dashboard" className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700">Dashboard</a>
+              <a href="/reminders" className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700">Reminders</a>
+              <a href="/lists" className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700">Lists</a>
+              <a href="/calendar" className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700">Calendar</a>
+              <a href="/settings" className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700">Settings</a>
             </div>
           </div>
         </div>
