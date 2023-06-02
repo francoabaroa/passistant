@@ -1,6 +1,7 @@
 from app import db
-from sqlalchemy import Enum as SQLAEnum
 from enum import Enum
+from sqlalchemy import Enum as SQLAEnum
+from sqlalchemy.sql import func
 
 class Role(Enum):
     PARENT = 'PARENT'
@@ -29,5 +30,8 @@ class Member(db.Model):
     status = db.Column(SQLAEnum(Status), nullable=True)
     timezone = db.Column(db.String)
     family_id = db.Column(db.Integer, db.ForeignKey('family.id'))
+
+    created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.now())
 
     family = db.relationship('Family', backref=db.backref('members', lazy=True))

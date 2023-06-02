@@ -1,13 +1,8 @@
 from app import db
-from sqlalchemy import Enum as SQLAEnum
+from app.enums.source import Source
 from enum import Enum
-
-class Source(Enum):
-    SMS = 'SMS'
-    EMAIL = 'EMAIL'
-    CALENDAR = 'CALENDAR'
-    VOICE_NOTE = 'VOICE NOTE'
-    IMAGE = 'IMAGE'
+from sqlalchemy import Enum as SQLAEnum
+from sqlalchemy.sql import func
 
 class Priority(Enum):
     NONE = 'NONE'
@@ -43,5 +38,8 @@ class Reminder(db.Model):
     type = db.Column(SQLAEnum(Type), nullable=True)
     archived = db.Column(db.Boolean)
     member_id = db.Column(db.Integer, db.ForeignKey('member.id'))
+
+    created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.now())
 
     member = db.relationship('Member', backref=db.backref('reminders', lazy=True))
