@@ -74,8 +74,8 @@ class DataProcessingService:
             intent = self.identify_intent(original_text)
 
             if intent == Intent.VIEW_LISTS:
-                list_names = self.data_retrieval.get_all_list_names(from_number)
-                message = "\n\n".join([f'- {list["name"]}' for list in list_names])
+                list_names_and_items = self.data_retrieval.get_all_lists(from_number)
+                message = "\n\n".join([f'- {list["name"]}\n' + '\n'.join([f'    - {item["name"]}: {item["quantity"]}' for item in list['items']]) for list in list_names_and_items])
 
                 return json.dumps({
                     "responseMessage": message
