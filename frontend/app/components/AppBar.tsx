@@ -17,7 +17,7 @@ export default function AppBar() {
               </button>
             </div>
             <div className="hidden lg:block lg:ml-10">
-              <a href="/" className="text-2xl font-bold text-gray-700">smilo</a>
+              <a href="/" className="text-2xl font-bold text-gray-700">passistant</a>
             </div>
           </div>
           <div className="hidden lg:block lg:w-3/4">
