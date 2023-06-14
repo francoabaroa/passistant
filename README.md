@@ -10,7 +10,7 @@ experimental. do not use just yet. coming soon.
 - Your passsistant receives your message, parses out the important thing and saves it for you to your database
 - View your life dashboard
 
-<img width="980" alt="passistant_dashboard" src="https://github.com/francoabaroa/passistant/assets/18104028/516b66af-e4be-4ed8-835e-72800e36fd8f">
+<img width="980" alt="passistant_dashboard" src="https://github.com/francoabaroa/passistant/assets/18104028/d857300e-7924-4d6f-8475-1ad5e1802c7c">
 
 
 ## COMING SOON
