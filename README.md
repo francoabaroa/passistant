@@ -15,7 +15,6 @@ experimental. do not use just yet. coming soon.
 
 ## COMING SOON
 - Proper documentation about how to install and use (including requirements.txt)
-- Prompts are not currently checked in; I plan to push them soon
 - Schedule notifications to be reminded of your important tasks or events
 - Receive notifications
 - Handle multiple dates at the same time (like giving your passistant a school calendar)
